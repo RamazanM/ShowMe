@@ -1,4 +1,4 @@
-package com.ramazanm.parent.ui.theme
+package com.ramazanm.showme.child.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

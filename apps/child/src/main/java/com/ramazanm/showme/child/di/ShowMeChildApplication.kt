@@ -1,4 +1,4 @@
-package com.ramazanm.child.di
+package com.ramazanm.showme.child.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -3,16 +3,17 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp") version "2.3.1"
     id("dagger.hilt.android.plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.ramazanm.child"
+    namespace = "com.ramazanm.showme.child"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.ramazanm.child"
+        applicationId = "com.ramazanm.showme.child"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -52,6 +53,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(platform(libs.firebase.bom))
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

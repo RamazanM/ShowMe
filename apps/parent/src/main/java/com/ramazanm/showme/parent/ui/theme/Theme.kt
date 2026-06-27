@@ -1,6 +1,5 @@
-package com.ramazanm.parent.ui.theme
+package com.ramazanm.showme.parent.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

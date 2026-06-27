@@ -1,4 +1,4 @@
-package com.ramazanm.parent.ui.theme
+package com.ramazanm.showme.parent.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.ramazanm.parent
+package com.ramazanm.showme.parent
 
 import org.junit.Test
 

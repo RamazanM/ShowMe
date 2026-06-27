@@ -1,4 +1,4 @@
-package com.ramazanm.child
+package com.ramazanm.showme.parent
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ramazanm.child.ui.theme.ShowMeTheme
+import com.ramazanm.showme.parent.ui.theme.ShowMeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             ShowMeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "ChildApp",
+                        name = "ParentApp",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

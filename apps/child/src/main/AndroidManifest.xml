@@ -7,10 +7,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".di.ShowMeChildApplication"
+        android:name="com.ramazanm.showme.child.di.ShowMeChildApplication"
         android:theme="@style/Theme.ShowMe">
         <activity
-            android:name=".MainActivity"
+            android:name="com.ramazanm.showme.child.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ShowMe"
