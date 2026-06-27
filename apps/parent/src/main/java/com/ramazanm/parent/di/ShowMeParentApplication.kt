@@ -1,0 +1,7 @@
+package com.ramazanm.parent.di
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class ShowMeParentApplication : Application()
