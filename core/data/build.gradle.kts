@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version "2.3.1"
     id("dagger.hilt.android.plugin")
 }
 
@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.core.ktx)
     implementation(libs.material)
     implementation(project(":core:model"))
     // Hilt Core Dependencies
