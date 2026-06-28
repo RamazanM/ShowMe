@@ -2,18 +2,18 @@ package com.ramazanm.showme.parent.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ramazanm.model.Concept
+import com.ramazanm.showme.data.repository.IFirebaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddConceptViewModel @Inject constructor() : ViewModel() {
+class AddConceptViewModel @Inject constructor(private val repository: IFirebaseRepository) : ViewModel() {
     private var _uiState = MutableStateFlow(AddConceptUiState())
     val uiState = _uiState.asStateFlow()
 
@@ -34,6 +34,12 @@ class AddConceptViewModel @Inject constructor() : ViewModel() {
     }
     fun addConcept() {
         viewModelScope.launch {
+            repository.addConcept(Concept(
+                title = _uiState.value.title,
+                description = _uiState.value.description,
+                imageUrl = _uiState.value.imageUrl,
+                soundUrl = _uiState.value.soundUrl
+            ))
             _eventFlow.emit(AddConceptEvent.ShowToast("Concept added"))
         }
     }

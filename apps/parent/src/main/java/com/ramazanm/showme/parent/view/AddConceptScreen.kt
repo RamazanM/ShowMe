@@ -34,8 +34,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
+import com.ramazanm.showme.data.repository.TestFirebaseRepository
 import com.ramazanm.showme.parent.ui.icons.arrow_back
 import com.ramazanm.showme.parent.ui.icons.save
 import com.ramazanm.showme.parent.ui.theme.ShowMeTheme
@@ -115,7 +115,7 @@ fun AddConceptScreen(viewModel: AddConceptViewModel = hiltViewModel(), onNavigat
 @Composable
 fun AddScreenPreview() {
     ShowMeTheme {
-        AddConceptScreen(viewModel= AddConceptViewModel(),
+        AddConceptScreen(viewModel= AddConceptViewModel(TestFirebaseRepository()),
             {})
     }
 }

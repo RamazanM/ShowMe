@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.ramazanm.data"
+    namespace = "com.ramazanm.showme.data"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -32,6 +32,9 @@ dependencies {
     implementation(project(":core:model"))
     // Hilt Core Dependencies
     implementation(libs.hilt.android)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.firestore)
+
     ksp(libs.hilt.compiler)
 
     implementation(platform(libs.firebase.bom))
