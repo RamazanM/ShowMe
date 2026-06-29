@@ -25,8 +25,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), onSelectItem: (itemId
 
         LazyColumn(modifier = Modifier.padding(innerPadding)) {
             item { Text(text = "Home Screen") }
-            items(concepts.value.concepts) {
-                Button(onClick = { onSelectItem(it.id) }) { Text(it.title) }
+            items(concepts.value.concepts.filter { it.id != null }) {
+                Button(onClick = { onSelectItem(it.id!!) }) { Text(it.title) }
 
             }
         }

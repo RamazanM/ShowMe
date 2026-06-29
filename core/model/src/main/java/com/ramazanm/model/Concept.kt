@@ -4,11 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Concept(
-    val id: String,
+    val id: String? = null,
     val title: String,
     val description: String,
-    val imageUrl: String,
+    val imageUrls: List<String>,
     val soundUrl: String
 ) {
-    constructor() : this("", """,""", "", "", "")
+    constructor() : this("", """,""", "", listOf(""), "")
 }

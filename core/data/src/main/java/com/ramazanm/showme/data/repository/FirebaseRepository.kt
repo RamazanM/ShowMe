@@ -8,7 +8,11 @@ import javax.inject.Inject
 class FirebaseRepository @Inject constructor(private val firestore: FirebaseFirestore) :
     IFirebaseRepository {
     override fun addConcept(concept: Concept) {
-        firestore.collection("concepts").add(concept)
+        firestore.collection("concepts").add(concept).addOnSuccessListener {
+            println("Concept added with ID: ${it.id}")
+        }.addOnFailureListener {
+            println("Error adding concept: $it")
+        }
     }
 
     override suspend fun getConcepts(): List<Concept> {

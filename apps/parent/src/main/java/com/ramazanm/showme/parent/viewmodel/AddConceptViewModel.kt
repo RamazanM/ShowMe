@@ -13,7 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AddConceptViewModel @Inject constructor(private val repository: IFirebaseRepository) : ViewModel() {
+class AddConceptViewModel @Inject constructor(private val repository: IFirebaseRepository) :
+    ViewModel() {
     private var _uiState = MutableStateFlow(AddConceptUiState())
     val uiState = _uiState.asStateFlow()
 
@@ -22,24 +23,39 @@ class AddConceptViewModel @Inject constructor(private val repository: IFirebaseR
     fun updateTitle(title: String) {
         _uiState.update { it.copy(title = title) }
     }
-    fun updateDescription(description: String)  {
+
+    fun updateDescription(description: String) {
         _uiState.update { it.copy(description = description) }
     }
 
-    fun updateImageUrl(imageUrl: String)  {
-        _uiState.update { it.copy(imageUrl = imageUrl) }
+    fun updateImageUrl(index: Int, imageUrl: String) {
+        _uiState.update { it.copy(imageUrls = it.imageUrls.mapIndexed { i, s -> if (i == index) imageUrl else s }) }
     }
-    fun updateSoundUrl(soundUrl: String)  {
+
+    fun addImage() {
+        _uiState.update { it.copy(imageUrls = it.imageUrls + listOf("")) }
+
+    }
+
+    fun deleteImage(index: Int) {
+        _uiState.update { it.copy(imageUrls = it.imageUrls.filterIndexed { i, _ -> i != index }) }
+
+    }
+
+    fun updateSoundUrl(soundUrl: String) {
         _uiState.update { it.copy(soundUrl = soundUrl) }
     }
+
     fun addConcept() {
         viewModelScope.launch {
-            repository.addConcept(Concept(
-                title = _uiState.value.title,
-                description = _uiState.value.description,
-                imageUrl = _uiState.value.imageUrl,
-                soundUrl = _uiState.value.soundUrl
-            ))
+            repository.addConcept(
+                Concept(
+                    title = _uiState.value.title,
+                    description = _uiState.value.description,
+                    imageUrls = _uiState.value.imageUrls,
+                    soundUrl = _uiState.value.soundUrl
+                )
+            )
             _eventFlow.emit(AddConceptEvent.ShowToast("Concept added"))
         }
     }
@@ -48,7 +64,7 @@ class AddConceptViewModel @Inject constructor(private val repository: IFirebaseR
 data class AddConceptUiState(
     val title: String = "",
     val description: String = "",
-    val imageUrl: String = "",
+    val imageUrls: List<String> = listOf(""),
     val soundUrl: String = ""
 )
 
